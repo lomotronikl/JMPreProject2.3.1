@@ -10,14 +10,19 @@ import web.model.User;
 
 import java.util.List;
 
-@Component
+
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    final
     UserDao dao;
+
+    public UserServiceImpl(UserDao dao) {
+        this.dao = dao;
+    }
+
     @Override
     public void saveUser(String name, String lastName, int age)  {
        dao.saveUser(name,lastName,age);
